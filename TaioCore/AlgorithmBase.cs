@@ -6,23 +6,17 @@ using System.Threading.Tasks;
 
 namespace TaioCore
 {
-    public class AlgorithmBase
+    public abstract class AlgorithmBase
     {
         protected Graph G1;
         protected Graph G2;
 
-        int vSize = 0;
-        GraphsIsomorphism vsolution = new GraphsIsomorphism();
+        protected bool[] G1Left;
+        protected bool[] G2Left;
 
-        int VeSize = 0;
-        GraphsIsomorphism vesolution = new GraphsIsomorphism();
+        protected int EdgeCounter = 0;
 
-        int e = 0;
-
-        bool[] g1Left;
-        bool[] g2Left;
-
-        GraphsIsomorphism W;
+        protected GraphsIsomorphism CurrentIsomorphism;
 
         public AlgorithmBase(Graph G1, Graph G2)
         {
@@ -35,35 +29,40 @@ namespace TaioCore
             for (int u = 0; u < G1.NumberOfVertices; u++)
                 for (int v = 0; v < G2.NumberOfVertices; v++)
                 {
-                    W = new GraphsIsomorphism();
-                    W.AddAtEnd(u, v);
-                    e = 0;
-                    g1Left = new bool[G1.NumberOfVertices];
-                    g2Left = new bool[G2.NumberOfVertices];
-                    for (int x = 0; x < g1Left.Length; x++)
-                        g1Left[x] = true;
-                    for (int x = 0; x < g2Left.Length; x++)
-                        g2Left[x] = true;
-                    g1Left[u] = false;
-                    g2Left[v] = false;
-                    rek();
-                }
+                    CurrentIsomorphism = new GraphsIsomorphism();
+                    CurrentIsomorphism.AddAtEnd(u, v);
 
-            Console.WriteLine(vsolution);
-            Console.WriteLine();
-            Console.WriteLine(vesolution);
+                    EdgeCounter = 0;
+
+                    G1Left = new bool[G1.NumberOfVertices];
+                    G2Left = new bool[G2.NumberOfVertices];
+
+                    for (int x = 0; x < G1Left.Length; x++)
+                        G1Left[x] = true;
+
+                    for (int x = 0; x < G2Left.Length; x++)
+                        G2Left[x] = true;
+
+                    G1Left[u] = false;
+                    G2Left[v] = false;
+
+                    FindSolutionFrom();
+                }
         }
 
-        void rek()
+        protected void FindSolutionFrom()
         {
-            bool check = true;
-            for (int a = 0; a < g1Left.Length; a++)
-                for (int b = 0; b < g2Left.Length; b++)
-                    if (g1Left[a] && g2Left[b])
+            BeforeFindSolutionFrom();
+
+            for (int a = 0; a < G1Left.Length; a++)
+                for (int b = 0; b < G2Left.Length; b++)
+                    if (G1Left[a] && G2Left[b])
                     {
                         int counter = 0;
                         bool symmetric = true;
-                        W.Iterate((c, d)=> {
+
+                        CurrentIsomorphism.Iterate((c, d) =>
+                        {
                             if (G1.IsLink(a, c))
                             {
                                 if (G2.IsLink(b, d))
@@ -77,34 +76,20 @@ namespace TaioCore
                                     symmetric = false;
                             }
                         });
+
                         if (symmetric && counter > 0)
                         {
-                            check = false;
-                            g1Left[a] = false;
-                            g2Left[b] = false;
-                            W.AddAtEnd(a, b);
-                            e += counter;
-                            rek();
-                            g1Left[a] = true;
-                            g2Left[b] = true;
-                            W.RemoveFormEnd();
-                            e -= counter;
+                            PairInFindSolutionFrom(a, b, counter);
                         }
                     }
-            if (check)
-            {
 
-                if (W.Size > vSize)
-                {
-                    vSize = W.Size;
-                    vsolution = W.Clone();
-                }
-                if (W.Size + e > VeSize)
-                {
-                    VeSize = W.Size + e;
-                    vesolution = W.Clone();
-                }
-            }
+            AfterFindSolutionFrom();
         }
+
+        protected abstract void AfterFindSolutionFrom();
+
+        protected abstract void PairInFindSolutionFrom(int a, int b, int counter);
+
+        protected abstract void BeforeFindSolutionFrom();
     }
 }

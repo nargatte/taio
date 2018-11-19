@@ -11,11 +11,17 @@ namespace Dokladny
     {
         static void Main(string[] args)
         {
-            Graph Ga = new Graph("../../../7_8_A_Krzysiak.csv");
-            Graph Gb = new Graph("../../../7_8_B_Krzysiak.csv");
+            ProgramLoader.LoadGraphs(args, (G1, G2) =>
+            {
+                var a = new AlgorithmAccurate(G1, G2);
+                var l = AlgorithmStopwatch.RunningTime(a);
 
-            new AlgorithmBase(Ga, Gb).Run();
-
+                Console.WriteLine($"Czas: {l} ms");
+                Console.WriteLine("Rozwiązanie dla metryki liczby wierzchołków");
+                Console.WriteLine(a.GetSolutionForVertexCounter());
+                Console.WriteLine("Rozwiązanie dla metryki liczby wierzchołków i liczby krawędzi");
+                Console.WriteLine(a.GetSolutionForVertexAndEdgesCounter());
+            });
         }
 
     }

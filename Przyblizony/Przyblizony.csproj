@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgorithmEstimatedBase.cs" />
+    <Compile Include="AlgorithmEstimatedForV.cs" />
+    <Compile Include="AlgorithmEstimatedForVE.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
