@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaioCore", "TaioCore\TaioCore.csproj", "{8CB97D49-F27F-4ED6-8F8F-1C46C5DAED9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dokladny", "Dokladny\Dokladny.csproj", "{F9CF9330-D80A-4086-BE28-C1676DABFAE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Przyblizony", "Przyblizony\Przyblizony.csproj", "{96359544-9B6C-443B-BD4C-27418021DCAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8CB97D49-F27F-4ED6-8F8F-1C46C5DAED9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CB97D49-F27F-4ED6-8F8F-1C46C5DAED9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CB97D49-F27F-4ED6-8F8F-1C46C5DAED9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9CF9330-D80A-4086-BE28-C1676DABFAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9CF9330-D80A-4086-BE28-C1676DABFAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9CF9330-D80A-4086-BE28-C1676DABFAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9CF9330-D80A-4086-BE28-C1676DABFAE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96359544-9B6C-443B-BD4C-27418021DCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96359544-9B6C-443B-BD4C-27418021DCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96359544-9B6C-443B-BD4C-27418021DCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96359544-9B6C-443B-BD4C-27418021DCAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
