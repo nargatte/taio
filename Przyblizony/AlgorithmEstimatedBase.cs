@@ -26,7 +26,7 @@ namespace Przyblizony
 
         protected override void BeforeFindSolutionFrom()
         {
-            BestMetrics = 0;
+            BestMetrics = -1;
 
             BestA = 0;
             BestB = 0;
@@ -47,7 +47,7 @@ namespace Przyblizony
 
         protected override void AfterFindSolutionFrom()
         {
-            if(BestMetrics == 0)
+            if(BestMetrics == -1)
                 TryToUpdateSolution();
             else
             {

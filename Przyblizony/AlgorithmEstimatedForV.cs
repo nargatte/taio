@@ -19,11 +19,11 @@ namespace Przyblizony
             int level2 = 0;
 
             for (int x = 0; x < G1.NumberOfVertices; x++)
-                if (/*G1Left[x] && */G1.IsLink(a, x))
+                if (G1Left[x] && G1.IsLink(a, x))
                     level1++;
 
             for (int x = 0; x < G2.NumberOfVertices; x++)
-                if (/*G2Left[x] && */G2.IsLink(a, x))
+                if (G2Left[x] && G2.IsLink(a, x))
                     level2++;
 
             return Math.Min(level1, level2);
