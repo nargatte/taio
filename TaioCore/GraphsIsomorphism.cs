@@ -40,5 +40,8 @@ namespace TaioCore
             "\n" + 
             string.Join(",", isomorphism.Select(t => t.Item2).ToArray());
 
+        public int[] GetPermutation1 => isomorphism.Select(t => t.Item1).ToArray();
+
+        public int[] GetPermutation2 => isomorphism.Select(t => t.Item2).ToArray();
     }
 }

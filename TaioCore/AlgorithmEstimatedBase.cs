@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaioCore;
-
-namespace Przyblizony
+﻿namespace TaioCore
 {
     public abstract class AlgorithmEstimatedBase : AlgorithmBase
     {
@@ -22,7 +15,7 @@ namespace Przyblizony
         {
         }
 
-        public string GetSolution() => Solution.ToString();
+        public GraphsIsomorphism GetSolution() => Solution;
 
         protected override void BeforeFindSolutionFrom()
         {

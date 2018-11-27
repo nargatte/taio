@@ -1,29 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaioCore;
-
-namespace Dokladny
+﻿namespace TaioCore
 {
-    class AlgorithmAccurate : AlgorithmBase
+    class AlgorithmAccurate : AlgorithmBase, IReturnVESolution, IReturnVSolution
     {
         private int VSize = 0;
-        private GraphsIsomorphism VSolution = new GraphsIsomorphism();
+        private GraphsIsomorphism VSolutionIso = new GraphsIsomorphism();
 
         private int VeSize = 0;
-        private GraphsIsomorphism VeSolution = new GraphsIsomorphism();
+        private GraphsIsomorphism VeSolutionIso = new GraphsIsomorphism();
 
         private bool Check;
 
         public AlgorithmAccurate(Graph G1, Graph G2) : base(G1, G2)
         {
         }
-
-        public string GetSolutionForVertexCounter() => VSolution.ToString();
-
-        public string GetSolutionForVertexAndEdgesCounter() => VeSolution.ToString();
 
         protected override void BeforeFindSolutionFrom()
         {
@@ -59,14 +48,17 @@ namespace Dokladny
                 if (CurrentIsomorphism.Size > VSize)
                 {
                     VSize = CurrentIsomorphism.Size;
-                    VSolution = CurrentIsomorphism.Clone();
+                    VSolutionIso = CurrentIsomorphism.Clone();
                 }
                 if (CurrentIsomorphism.Size + EdgeCounter > VeSize)
                 {
                     VeSize = CurrentIsomorphism.Size + EdgeCounter;
-                    VeSolution = CurrentIsomorphism.Clone();
+                    VeSolutionIso = CurrentIsomorphism.Clone();
                 }
             }
         }
+
+        public GraphsIsomorphism VESolution => VeSolutionIso;
+        public GraphsIsomorphism VSolution => VSolutionIso;
     }
 }

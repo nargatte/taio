@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9CF9330-D80A-4086-BE28-C1676DABFAE3}</ProjectGuid>
+    <ProjectGuid>{8CB97D49-F27F-4ED6-8F8F-1C46C5DAED9C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Dokladny</RootNamespace>
-    <AssemblyName>Dokladny</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaioCore</RootNamespace>
+    <AssemblyName>TaioCore</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,13 +23,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,17 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmAccurate.cs" />
+    <Compile Include="AlgorithmBase.cs" />
+    <Compile Include="AlgorithmEstimatedBase.cs" />
+    <Compile Include="AlgorithmEstimatedForV.cs" />
+    <Compile Include="AlgorithmEstimatedForVE.cs" />
+    <Compile Include="AlgorithmStopwatch.cs" />
+    <Compile Include="Graph.cs" />
+    <Compile Include="GraphsIsomorphism.cs" />
+    <Compile Include="IReturnVESolution.cs" />
+    <Compile Include="IReturnVSolution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TaioCore\TaioCore.csproj">
-      <Project>{8cb97d49-f27f-4ed6-8f8f-1c46c5daed9c}</Project>
-      <Name>TaioCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

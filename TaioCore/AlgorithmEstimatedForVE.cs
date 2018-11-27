@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaioCore;
-
-namespace Przyblizony
+﻿namespace TaioCore
 {
-    public class AlgorithmEstimatedForVE : AlgorithmEstimatedBase
+    public class AlgorithmEstimatedForVE : AlgorithmEstimatedBase, IReturnVESolution
     {
         public AlgorithmEstimatedForVE(Graph G1, Graph G2) : base(G1, G2)
         {
@@ -23,5 +16,7 @@ namespace Przyblizony
                 Solution = CurrentIsomorphism.Clone();
             }
         }
+
+        public GraphsIsomorphism VESolution => Solution;
     }
 }

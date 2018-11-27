@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaioCore;
 
-namespace Przyblizony
+namespace TaioCore
 {
-    public class AlgorithmEstimatedForV : AlgorithmEstimatedBase
+    public class AlgorithmEstimatedForV : AlgorithmEstimatedBase, IReturnVSolution
     {
         public AlgorithmEstimatedForV(Graph G1, Graph G2) : base(G1, G2)
         {
@@ -23,7 +18,7 @@ namespace Przyblizony
                     level1++;
 
             for (int x = 0; x < G2.NumberOfVertices; x++)
-                if (G2Left[x] && G2.IsLink(a, x))
+                if (G2Left[x] && G2.IsLink(b, x))
                     level2++;
 
             return Math.Min(level1, level2);
@@ -37,5 +32,7 @@ namespace Przyblizony
                 Solution = CurrentIsomorphism.Clone();
             }
         }
+
+        public GraphsIsomorphism VSolution => Solution;
     }
 }
